@@ -2688,6 +2688,8 @@ dism /online /Remove-Package /PackageName:$EdgeLegacyPackage /quiet /norestart 2
         ## powershell -noexit -command "get-appxpackage | select name | format-table -autosize"
 
 Get-AppXPackage -AllUsers | Where-Object {
+# breaks file explorer
+$_.Name -notlike '*CBS*' -and
 $_.Name -notlike '*Microsoft.AV1VideoExtension*' -and
 $_.Name -notlike '*Microsoft.AVCEncoderVideoExtension*' -and
 $_.Name -notlike '*Microsoft.HEIFImageExtension*' -and
@@ -2695,14 +2697,21 @@ $_.Name -notlike '*Microsoft.HEVCVideoExtension*' -and
 $_.Name -notlike '*Microsoft.MPEG2VideoExtension*' -and
 $_.Name -notlike '*Microsoft.Paint*' -and
 $_.Name -notlike '*Microsoft.RawImageExtension*' -and
+# breaks windows server defender
+$_.Name -notlike '*Microsoft.SecHealthUI*' -and
 $_.Name -notlike '*Microsoft.VP9VideoExtensions*' -and
 $_.Name -notlike '*Microsoft.WebMediaExtensions*' -and
 $_.Name -notlike '*Microsoft.WebpImageExtension*' -and
 $_.Name -notlike '*Microsoft.Windows.Photos*' -and
+# breaks windows server task bar
+$_.Name -notlike '*Microsoft.Windows.ShellExperienceHost*' -and
+# breaks windows server start menu
+$_.Name -notlike '*Microsoft.Windows.StartMenuExperienceHost*' -and
 $_.Name -notlike '*Microsoft.WindowsNotepad*' -and
 $_.Name -notlike '*Microsoft.WindowsStore*' -and
-$_.Name -notlike '*CBS*' -and
-$_.Name -notlike '*NVIDIACorp.NVIDIAControlPanel*'
+$_.Name -notlike '*NVIDIACorp.NVIDIAControlPanel*' -and
+# breaks windows server immersive control panel
+$_.Name -notlike '*windows.immersivecontrolpanel*'
 } | Remove-AppxPackage -ErrorAction SilentlyContinue
 
         Write-Host "REMOVE UWP FEATURES`n"
@@ -2734,11 +2743,28 @@ Remove-WindowsCapability -Online -Name $_.Name | Out-Null
 		## powershell -noexit -command "dism /online /get-features /format:table"
 
 Get-WindowsOptionalFeature -Online | Where-Object {
-$_.FeatureName -notlike '*NetFx3*' -and
-$_.FeatureName -notlike '*LegacyComponents*' -and
 $_.FeatureName -notlike '*DirectPlay*' -and
+$_.FeatureName -notlike '*LegacyComponents*' -and
+$_.FeatureName -notlike '*NetFx3*' -and
+# breaks windows server turn windows features on or off
+$_.FeatureName -notlike '*NetFx4*' -and
 $_.FeatureName -notlike '*NetFx4-AdvSrvs*' -and
-$_.FeatureName -notlike '*SearchEngine-Client-Package*'
+# breaks windows server turn windows features on or off
+$_.FeatureName -notlike '*NetFx4ServerFeatures*' -and
+# breaks search
+$_.FeatureName -notlike '*SearchEngine-Client-Package*' -and
+# breaks windows server desktop
+$_.FeatureName -notlike '*Server-Shell*' -and
+# breaks windows server defender
+$_.FeatureName -notlike '*Windows-Defender*' -and
+# breaks windows server internet
+$_.FeatureName -notlike '*Server-Drivers-General*' -and
+# breaks windows server internet
+$_.FeatureName -notlike '*ServerCore-Drivers-General*' -and
+# breaks windows server internet
+$_.FeatureName -notlike '*ServerCore-Drivers-General-WOW64*' -and
+# breaks windows server nvidia app
+$_.FeatureName -notlike '*WirelessNetworking*'
 } | ForEach-Object {
 try {
 Disable-WindowsOptionalFeature -Online -FeatureName $_.FeatureName -NoRestart -WarningAction SilentlyContinue | Out-Null
