@@ -2,7 +2,7 @@
 - Windows one click guide for power users
 
 # Requirements
-- Windows 10/11 Home/Pro
+- Windows 10/11 Home/Pro/LTSC/IOT
 - Online access
 
 # IWR
