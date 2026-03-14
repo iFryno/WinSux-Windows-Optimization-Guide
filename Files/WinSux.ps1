@@ -2719,8 +2719,6 @@ $_.Name -notlike '*windows.immersivecontrolpanel*'
         ## powershell -noexit -command "dism /online /get-capabilities /format:table"
 
 Get-WindowsCapability -Online | Where-Object {
-# breaks windows server turn windows features on or off
-$_.Name -notlike '*AzureArcSetup*' -and
 $_.Name -notlike '*Microsoft.Windows.Ethernet*' -and
 # windows 10
 $_.Name -notlike '*Microsoft.Windows.MSPaint*' -and
@@ -2731,6 +2729,7 @@ $_.Name -notlike '*Microsoft.Windows.Wifi*' -and
 $_.Name -notlike '*NetFX3*' -and
 # windows 11 breaks msi installers if removed
 $_.Name -notlike '*VBSCRIPT*' -and
+# breaks monitoring programs
 $_.Name -notlike '*WMIC*' -and
 # windows 10 breaks uwp snippingtool if removed
 $_.Name -notlike '*Windows.Client.ShellComponents*'
@@ -2765,6 +2764,8 @@ $_.FeatureName -notlike '*Server-Drivers-General*' -and
 $_.FeatureName -notlike '*ServerCore-Drivers-General*' -and
 # breaks windows server internet
 $_.FeatureName -notlike '*ServerCore-Drivers-General-WOW64*' -and
+# breaks windows server turn windows features on or off
+$_.Name -notlike '*Server-Gui-Mgmt*' -and
 # breaks windows server nvidia app
 $_.FeatureName -notlike '*WirelessNetworking*'
 } | ForEach-Object {
