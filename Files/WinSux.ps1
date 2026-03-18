@@ -47,9 +47,6 @@
 
         Write-Host "youtube.com/FR3" -ForegroundColor White -NoNewline; Write-Host "3THY`n" -ForegroundColor Cyan
 
-# fix enter your pin hello face sign in bug allow password instead
-cmd /c "reg add `"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device`" /v `"DevicePasswordLessBuildVersion`" /t REG_DWORD /d `"0`" /f >nul 2>&1"
-
         Write-Host "7Z`n"
         ## explorer "https://www.7-zip.org"
 
@@ -4229,6 +4226,9 @@ $EditStepTwoPs1 = "$env:SystemRoot\Temp\StepTwo.ps1"
 
 # install runonce steptwo ps1 file to run in normal boot
 cmd /c "reg add `"HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce`" /v `"StepTwo`" /t REG_SZ /d `"powershell.exe -nop -ep bypass -WindowStyle Maximized -f $env:SystemRoot\Temp\StepTwo.ps1`" /f >nul 2>&1"
+
+# fix enter your pin hello face sign in bug allow password instead
+cmd /c "reg add `"HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\PasswordLess\Device`" /v `"DevicePasswordLessBuildVersion`" /t REG_DWORD /d `"0`" /f >nul 2>&1"
 
 # disable open terminal by default
 cmd /c "reg add `"HKCU\Console\%%Startup`" /v `"DelegationConsole`" /t REG_SZ /d `"{B23D10C0-E52E-411E-9D5B-C09FDF709C7D}`" /f >nul 2>&1"
