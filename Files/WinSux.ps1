@@ -185,9 +185,7 @@ cmd /c "sc delete `"$($service.Name)`" >nul 2>&1"
 }
 
 # remove chrome scheduled tasks
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdateTaskMachineCore'} | Unregister-ScheduledTask -Confirm:$false
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdateTaskMachineUA'} | Unregister-ScheduledTask -Confirm:$false
-Get-ScheduledTask | Where-Object {$_.Taskname -match 'GoogleUpdaterTaskSystem'} | Unregister-ScheduledTask -Confirm:$false
+Get-ScheduledTask | Where-Object { $_.TaskName -like '*Google*' } | Unregister-ScheduledTask -Confirm:$false -ErrorAction SilentlyContinue
 
         Write-Host "DIRECT X`n"
         ## explorer "https://www.microsoft.com/en-au/download/details.aspx?id=35"
