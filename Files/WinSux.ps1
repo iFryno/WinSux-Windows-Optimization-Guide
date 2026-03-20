@@ -1856,23 +1856,6 @@ E0,F6,C5,D5,0E,CA,50,00,00
 
 
 ; POWER
-; enable global timer resolution requests
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel]
-"GlobalTimerResolutionRequests"=dword:00000001
-
-; disable power throttling
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling]
-"PowerThrottlingOff"=dword:00000001
-
-; disable hibernate
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Power]
-"HibernateEnabled"=dword:00000000
-"HibernateEnabledDefault"=dword:00000000
-
-; disable fast boot
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
-"HiberbootEnabled"=dword:00000000
-
 ; enable allow usb overclock with secure boot regedit
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CI\Policy]
 "WHQLSettings"=dword:00000001
