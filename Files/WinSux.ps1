@@ -251,6 +251,9 @@ $StepOnePs1 = @'
 		## windowsdefender://exploitprotection
 		## windowsdefender://coreisolation
 
+# start explorer
+Start-Process explorer
+
 $windowssecuritysettings = @(
 # virus & threat protection - manage settings
 # real time protection - needs safe boot as trusted installer - windows turns this back on automatically

@@ -123,6 +123,9 @@ $DDU = @'
 	    # REMOVE WINLOGON STEPONE PS1 FILE
         cmd /c "reg add `"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon`" /v `"Userinit`" /t REG_SZ /d `"C:\WINDOWS\system32\userinit.exe,`" /f >nul 2>&1"
 
+# start explorer
+Start-Process explorer
+
 # remove safe mode boot
 cmd /c "bcdedit /deletevalue {current} safeboot >nul 2>&1"
 

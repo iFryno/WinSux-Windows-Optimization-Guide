@@ -29,3 +29,4 @@ iwr https://github.com/FR33THYFR33THY/WinSux-Windows-Optimization-Guide/raw/refs
 - 3/18/2026 Better remove logon chrome
 - 3/18/2026 Added fix enter your pin hello face sign in bug allow password instead
 - 3/21/2026 Added remove 3rd party scheduled tasks
+- 3/24/2026 Fixed black screen issue with safe boot
