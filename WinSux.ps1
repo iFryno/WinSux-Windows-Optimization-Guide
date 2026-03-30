@@ -2897,7 +2897,7 @@ Remove-Item $_.FullName -Recurse -Force
         function Show-Menu {
         Clear-Host
         Write-Host "INSTALL GRAPHICS DRIVERS" -ForegroundColor Yellow
-        Write-Host "SELECT YOUR SYSTEM'S GPU`n" -ForegroundColor Yellow
+        Write-Host "SELECT YOUR SYSTEM'S GPU" -ForegroundColor Yellow
         Write-Host " 1.  NVIDIA" -ForegroundColor Green
         Write-Host " 2.  AMD" -ForegroundColor Red
         Write-Host " 3.  INTEL" -ForegroundColor Blue
@@ -2919,7 +2919,7 @@ Remove-Item $_.FullName -Recurse -Force
 # download driver
 Start-Sleep -Seconds 5
 Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.nvidia.com/en-us/drivers"
-Wait-Process -Name chrome
+Pause
 
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
@@ -3265,7 +3265,7 @@ Start-Process -wait "$env:SystemRoot\Temp\Inspector.exe" -ArgumentList "-silentI
 # download driver
 Start-Sleep -Seconds 5
 Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.amd.com/en/support/download/drivers.html"
-Wait-Process -Name chrome
+Pause
 
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
@@ -3491,7 +3491,7 @@ cmd /c "reg add `"HKCU\Software\AMD\CN\VirtualSuperResolution`" /v `"AlreadyNoti
 # download driver
 Start-Sleep -Seconds 5
 Start-Process "C:\Program Files\Google\Chrome\Application\chrome.exe" "https://www.intel.com/content/www/us/en/search.html#sortCriteria=%40lastmodifieddt%20descending&f-operatingsystem_en=Windows%2011%20Family*&f-downloadtype=Drivers&cf-tabfilter=Downloads&cf-downloadsppth=Graphics"
-Wait-Process -Name chrome
+Pause
 
         Write-Host "SELECT DOWNLOADED DRIVER`n" -ForegroundColor Yellow
 
