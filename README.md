@@ -18,3 +18,6 @@ iwr https://github.com/FR33THYFR33THY/WinSux/raw/refs/heads/main/WinSux.ps1 -use
 # Guide
 [Video](<https://youtu.be/JJvW9e4X7k0>)
 [![Video](https://img.youtube.com/vi/JJvW9e4X7k0/maxresdefault.jpg)](https://youtu.be/JJvW9e4X7k0)
+
+[Talon Is Malware & (Addressing My Community)](<https://youtu.be/UAOJ7-kRKdI>)
+[![Video](https://img.youtube.com/vi/UAOJ7-kRKdI/maxresdefault.jpg)](https://youtu.be/UAOJ7-kRKdI)
